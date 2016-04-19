@@ -1,0 +1,18 @@
+\section{Introducción}
+En este trabajo práctico se propone escuchar paquetes Ethernet pasivamente de tres diferentes redes para luego realizar estadísticas sobre cierta información provista por los paquetes con el objetivo de aplicar los conceptos de teoría de la infromación visto en casos reales para estudiar el funcionamiento de ciertas redes en concreto.\\
+Primero, con ayuda del script \textbf{PEDROPCAPIEDRAS} utilizamos el paquete de python conocido como Scapy para capturar los paquetes de una red y guardarlos en un archivo para poder procesarlos más tarde.\\
+Luego, el script \textbf{SCAPPY DOO} se encarga de levantar los paquetes leídos en una medición para realizar los cálculos estadísticos sobre ellos. Vamos a dividir la documentación de los objetos calculados entre los que se usan para distinguir protocolos y los usados para distinguir nodos o hosts de la red.\bigskip
+
+Con respecto a los protocolos, calculamos:
+\begin{itemize}
+\item La cantidad de paquetes enviados con cada protocolo. Tomamos en cuenta sólo los protocolos para los que existe algún paquete que lo utiliza. Notar que los protocolos descartados no aportan mucha información a los datos calculados posteriormente. Es decir, consideramos la fuente $S = \{ s_1, \ldots, s_n \}$ donde cada $s_i$ representa el protocolo de algún paquete de la medición.
+\item A partir de esto, para cada protocolo representado por algún $s_i$, calculamos la probabilidad de que un paquete de la muestra al azar utilice ese protocolo. Si $P$ es la cantidad total de paquetes escuchados y $c_i$ la cantidad de paquetes de la muestra que usan el protocolo simbolizado por $s_i$, $p(s_i) = \frac{c_i}{P}$ es la probabilidad de que un paquete use ese protocolo.
+\item Por último, calculadas todas las $p(s_i)$, calculamos por definición la entropía de la fuente dada por $$H(S) = - \sum_{i=1}^{n} p(s_i) \cdot log_2(p(s_i))$$.
+\end{itemize}
+\bigskip
+Para distinguir los nodos de la red, proponemos como fuente $S = {s_1, \ldots, s_n}$, donde cada $s_i$ representa la dirección IP de origen de un paquete ARP. Nuevamente, como el caso anterior consideramos sólo los símbolos que corresponden a la dirección de origen de algún paquete de la muestra.\\
+Además, decidimos separar el muestreo entre los paquetes ARP con operación who-is de los de operación is-at, generando dos conjuntos de muestras disjuntos. Nos pareció que de esta manera podríamos tener un analisis mas detallado e interesante de la red, distinguiendo entre nodos que preguntan y nodos que responden.\\
+Decidimos tomar la dirección de origon del paquete y no la de destino ya que para los paquetes con operación who-is, la dirección de destino siempre es un broadcast a la red, por lo que no nos brindará información sobre los hosts de la red. Y para los paquetes con operación is-at, la dirección de destino será el emisor de un who-is, por lo que estaríamos contaminando la muestra de los is-at con información de los who-is que ya habremos analizado en la otra división de la muestra. (POR QUË NO ELEGIMOS DIRECCIONES MAC?)\\
+Para cada uno de los dos muestreos claculamos los mismos valores calculados para el caso de los protocolos (cantidad de paquetes por símbolo, probabilidad de cada símbolo y entropía de la fuente) por lo que no volveremos a detallar el procedimiento.\bigskip
+
+Habiendo definido todo esto procedemos a explicar cada experimento con su correspondiente resultado y conclusiones. 

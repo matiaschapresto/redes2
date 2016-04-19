@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=0.5in, top=3cm, bottom=2cm]{geometry}
+\usepackage[spanish, activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx} %Para incluir el logo de la UBA
+\usepackage{caratula} %Para armar el cuadro de integrantes
+\usepackage{hyperref} %Para escribir urls
+\usepackage{pdfpages} %Para incluir pdf's
+\usepackage{todonotes}
+\usepackage{float}
+\usepackage[linesnumbered]{algorithm2e}
+
+
+\graphicspath{{imagenes/}}
+
+%Cosas para escribir codigo fuente
+%Fuente: http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\usepackage{listings}
+\usepackage{color}
+
+\setcounter{secnumdepth}{5}
+
+\definecolor{mygreen}{rgb}{0,0.65,0.25}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{myorange}{rgb}{1,0.4,0.2}
+\definecolor{myblue}{rgb}{0,0,0.85}
+\definecolor{myred}{rgb}{0.85,0,0}
+
+%Configuracion para los listings
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\small,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{myred},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keywordstyle=\color{myblue},       % keyword style
+  language=Java,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{myorange},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\renewcommand{\lstlistingname}{C\'{o}digo}
+
+\lstset{language=Java,caption={},label=DescriptiveLabel}
+
+\begin{document}
+
+\integrante{Altman, Martín}{COMPLETAR}{COMPLETAR}
+\integrante{Chapresto, Matías}{COMPLETAR}{COMPLETAR}
+\integrante{Zylber, Ariel}{530/12}{arielzylber@gmail.com}
+
+\def\Materia{Teoría de las Comunicaciones}
+\def\Titulo{Trabajo Pr\'{a}ctico 1}
+\def\Fecha{20 de Abril de 2016}
+
+%----- CARATULA -----%
+
+\thispagestyle{empty}
+
+\begin{center}
+	\includegraphics[scale = 0.25]{imagenes/logo_uba.jpg}
+\end{center}
+
+\begin{center}
+	{\textbf{\large UNIVERSIDAD DE BUENOS AIRES}}\\[1.5em]
+	{\textbf{\large Departamento de Computaci\'{o}n}}\\[1.5em]
+    {\textbf{\large Facultad de Ciencias Exactas y Naturales}}\\
+    \vspace{35mm}
+    {\LARGE\textbf{\Materia}}\\[1em]    
+    \vspace{15mm}
+    {\Large \textbf{\Titulo}}\\[1em]
+    \vspace{15mm}
+    {\textbf{\Large \Fecha}}\\
+    \vspace{15mm}
+    \textbf{\tablaints}
+\end{center}
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\parskip=5pt
+\setlength{\parindent}{0pt}
+
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\include{introduccion}
+
+\end{document}
