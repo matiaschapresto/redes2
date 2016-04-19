@@ -1,0 +1,5 @@
+import scapy.all
+import sys
+
+sniffeados = scapy.all.sniff(iface="wlan0", prn=lambda x: x.show(), timeout = int(sys.argv[2]))
+scapy.all.wrpcap(sys.argv[1], sniffeados) 
